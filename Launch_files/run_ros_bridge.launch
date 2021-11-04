@@ -1,0 +1,15 @@
+#!/bin/bash
+
+path=/home/rota2030/CARLA/PythonAPI/carla/dist/carla-0.9.11-py2.7-linux-x86_64.egg
+
+while getopts "p:" option
+do
+   case $option in
+      p) path=${OPTARG}
+         ;;
+   esac
+done
+
+export PYTHONPATH=$PYTHONPATH:path
+source /opt/carla-ros-bridge/melodic/setup.bash
+roslaunch carla_ros_bridge carla_ros_bridge.launch
